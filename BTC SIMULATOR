@@ -1,0 +1,39 @@
+import random
+import time
+
+purse = 100000
+bitcoin = 45000
+tickrate = random.randint(5, 10)
+rate_of_change_options = [348, -8411, 3940, 34, 664, 1035, 3033, 9999, 13985, 139, -400, -1048, -10, 930, 331, -39, -1, 3940, 0, -40000, 32901, 988, 948, 2931, 45, 83, 10, 394, -399, -48, -45, -3910, 4000]
+BITCOIN_PORTFOLIO = 0
+transaction_fee = bitcoin / 50
+turns = 0
+
+print("welcome to crypto simulator, reach $1m to win, type y to buy, n to refuse and s to sell. updates every ~7 seconds")
+while True:
+    # Check if the purse value reaches 1 million
+    if purse >= 1000000:
+        print("Congratulations, you're a millionaire! Turns to reach millionaire:", turns,)
+        break  # Exit the loop and end the program
+        
+    time.sleep(tickrate)
+    RateofChange = random.choice(rate_of_change_options)
+    bitcoin += RateofChange
+    print("CURRENT BTC VALUE:", bitcoin, "CURRENT PURSE VALUE:", purse, "AMOUNT OF BITCOINS", BITCOIN_PORTFOLIO)
+    buy = input("Buy BTC? y/n/s")
+    if buy != "y" and buy != "n" and buy != "s":
+        print("invalid argument")
+    elif buy == "y":
+        print("You have bought 1 BTC for $", bitcoin, "!")
+        purse -= (bitcoin + transaction_fee)
+        BITCOIN_PORTFOLIO += 1
+        turns += 1
+    elif buy == "s":
+        if BITCOIN_PORTFOLIO == 0:
+            print("you have no bitcoins")
+        else:
+            print("You sell all bitcoins!")
+            purse += (BITCOIN_PORTFOLIO * bitcoin)
+    else:
+        print("waiting for the dip...")
+    
