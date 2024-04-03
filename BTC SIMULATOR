@@ -3,8 +3,8 @@ import time
 
 purse = 100000
 bitcoin = 45000
-tickrate = random.randint(5, 10)
-rate_of_change_options = [348, -8411, 3940, 34, 664, 1035, 3033, 9999, 13985, 139, -400, -1048, -10, 930, 331, -39, -1, 3940, 0, -40000, 32901, 988, 948, 2931, 45, 83, 10, 394, -399, -48, -45, -3910, 4000]
+tickrate = random.randint(5,6)
+rate_of_change_options = [348, -8411, 3940, 34, 664, 1035, 3033, 9999, 13985, 139, -400, -1048, -10, 930, 331, -39, -1, 3940, 5891, -40000, 32901, 988, 948, 2931, 45, -38918, 10, 394, -399, -48, -45, -3910, 4000, -19933, -33930, 9310, 3619, 5913, 7588, 9401, 6631, -10000, 4901, 8888, 12000, -3003, 9834, 3013, 1000, 1233, 773, 919]
 BITCOIN_PORTFOLIO = 0
 transaction_fee = bitcoin / 50
 turns = 0
@@ -34,6 +34,7 @@ while True:
         else:
             print("You sell all bitcoins!")
             purse += (BITCOIN_PORTFOLIO * bitcoin)
+            BITCOIN_PORTFOLIO -= BITCOIN_PORTFOLIO
     else:
         print("waiting for the dip...")
     
